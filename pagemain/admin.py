@@ -1,3 +1,4 @@
 from django.contrib import admin
 
-# Register your models here.
+from pagemain.models import FileImage
+admin.site.register(FileImage)

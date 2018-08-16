@@ -9,9 +9,9 @@ class FileImage(models.Model):
                                   height_field='file_height')
     description_file = models.TextField(blank=True,
                                         verbose_name='Описание файла')
-    file_width = PositiveSmallIntegerField()
-    file_height = PositiveSmallIntegerField()
-    data_added = models.DataTimeField(auto_now_add=True,
+    file_width = models.PositiveSmallIntegerField()
+    file_height = models.PositiveSmallIntegerField()
+    data_added = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Дата создания изображения')
     
     class Meta:
