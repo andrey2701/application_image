@@ -1,0 +1,16 @@
+<form action="" method="post" 
+{% if form.is_multipart %} enctype="multipart/form-data" {% endif %}>
+	{% csrf_token %}
+	<div>
+		{% for field in form %}
+		<div class="form-group">
+			{{field.label_tag}}
+			<div>{{field}}</div>
+			{% for error in fielf.errors %}
+			  <div class="errors">{{error}}</div>
+			{% endfor %}
+		</div>
+		{% endfor %}
+	</div>
+	<input type="submit" value="Загрузить" name="submit">
+</form>

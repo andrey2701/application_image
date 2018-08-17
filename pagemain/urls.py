@@ -10,4 +10,5 @@ app_name = 'pagemain'
 urlpatterns = [
 # Домашняя страница
 path('', views.index, name='index'),
+path('success/', views.success, name='success'),
 ]
