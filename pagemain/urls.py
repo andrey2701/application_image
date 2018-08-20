@@ -2,7 +2,7 @@
 from django.urls import path, re_path
 # from django.contrib.auth.views import login
 from . import views
-# from django.views.generic import TemplateView
+from django.views.generic import TemplateView
 
 # Установка пространства имен для users
 app_name = 'pagemain'

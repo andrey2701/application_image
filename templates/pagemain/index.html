@@ -1,5 +1,19 @@
 {% extends '../base.html' %}
 {% block title %}Главная страница{% endblock title %}
 {% block content %}
+  <ul>
+  	{% for image in images %}
+  	  <li>
+  	  	<p>{{ image.name_image }}</p>
+  	  	<img src="{{ image.name_file }}">
+  	  	<p>{{ image.date_added|date:'M d, Y H:i' }}</p>
+  	  	<p>{{ image.description_file }}</p>
+  	  </li>
+  	{% empty %}
+  	  <li>
+  	  	<p>Нет изображений для обработки</p>
+  	  </li>
+  	{% endfor %}  
+  </ul>
   {% include '../includes/image_form.html' %}
 {% endblock content %}

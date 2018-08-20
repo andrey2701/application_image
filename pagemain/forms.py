@@ -4,10 +4,8 @@ from .models import FileImage
 class FileImageForm(forms.ModelForm):
     class Meta:
         model = FileImage
-        widgets = {
-        'description_file': forms.Textarea
-        }
-        fields = ['name_image', 'name_file', 'description_file']
+        fields = ['name_file', 'name_image', 'description_file']
+        localized_fields = ('__all__')
         
     name_image = forms.CharField(label='Название изображения',
     							 error_messages={
@@ -22,4 +20,6 @@ class FileImageForm(forms.ModelForm):
     							 				}
     							 )
     description_file = forms.CharField(label='Описание изображения',
-    								   required=False)
+    								   required=False,
+                                       widget=forms.Textarea(attrs={'col': 80, 'rows': 10}),
+                                      )
