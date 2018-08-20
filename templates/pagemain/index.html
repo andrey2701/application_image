@@ -5,8 +5,8 @@
   	{% for image in images %}
   	  <li>
   	  	<p>{{ image.name_image }}</p>
-  	  	<img src="{{ image.name_file }}">
-  	  	<p>{{ image.date_added|date:'M d, Y H:i' }}</p>
+  	  	<img src="{{ image.name_file.url }}" alt='изображение' height='50'>
+  	  	<p>{{ image.data_added|date:'d E, Y г. H:i:s' }}</p>
   	  	<p>{{ image.description_file }}</p>
   	  </li>
   	{% empty %}
