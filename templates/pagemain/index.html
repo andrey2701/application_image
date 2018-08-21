@@ -1,27 +1,40 @@
 {% extends '../base.html' %}
 {% block title %}Главная страница{% endblock title %}
 {% block content %}
-	{% for image in images %}
+	
 	  <table>
-      {% if forloop.first %}
-        <tr>
-          <th>Наименование</th>
-          <th>Изображение</th>
-          <th>Дата создания</th>
-          <th>Описание</th>
-          <th>Редактирование</th>
-        </tr>
-      {% endif %}     
-      <tr>
-        <td>{{ image.name_image }}</td>
-        <td><img src="{{ image.name_file.url }}" height='50'></td>
-        <td>{{ image.data_added|date:'d E, Y г. H:i:s' }}</td>
-        <td>{{ image.description_file }}</td>
-        <td><a href="{% url 'pagemain:del_image' image.id %}">Удалить</a></td>
-      </tr>
-    </table>
-  {% empty %}
-    <p>Нет изображений для обработки</p>
-  {% endfor %}  
+      {% for image in images %}
+        {% if forloop.first %}
+          <caption>Набор изображений</caption>
+          <colgroup>
+            <col class="name">
+            <col class="file">
+            <col class="date">
+            <col class="descript">
+            <col class="edit">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Наименование</th>
+              <th scope="col">Изображение</th>
+              <th scope="col">Дата создания</th>
+              <th scope="col">Описание</th>
+              <th scope="col">Редактирование</th>
+            </tr>
+          </thead>
+        {% endif %}
+        <tbody>     
+          <tr>
+            <td>{{ image.name_image }}</td>
+            <td><img src="{{ image.name_file.url }}" height='50'></td>
+            <td>{{ image.data_added|date:'d E, Y г. H:i:s' }}</td>
+            <td>{{ image.description_file }}</td>
+            <td><a href="{% url 'pagemain:del_image' image.id %}">Удалить</a></td>
+          </tr>
+        </tbody>
+      {% empty %}
+        <p>Нет изображений для обработки</p>
+      {% endfor %}
+    </table>  
   {% include '../includes/image_form.html' %}
 {% endblock content %}

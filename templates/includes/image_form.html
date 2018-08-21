@@ -4,7 +4,7 @@
 		{% for field in form %}
 		<div class="form-group">
 			{{field.label_tag}}
-			<div>{{field}}</div>
+			{{field}}
 			{% for error in fielf.errors %}
 			  <div class="errors">{{error}}</div>
 			{% endfor %}

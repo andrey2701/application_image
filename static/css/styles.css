@@ -1,0 +1,28 @@
+table {
+	text-align: right;
+}
+
+.name {
+	width: 150px;
+}
+
+.file {
+	width: 150px;
+}
+
+.date {
+	width: 200px;
+}
+
+.descript {
+	width: 150px;
+}
+
+.edit {
+	width: 150px
+}
+
+.form-group label {
+	display: inline-block;
+	width: 200px;
+}

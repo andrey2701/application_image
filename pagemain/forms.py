@@ -8,6 +8,7 @@ class FileImageForm(forms.ModelForm):
         localized_fields = ('__all__')
         
     name_image = forms.CharField(label='Название изображения',
+                                 widget=forms.TextInput(attrs={'size': 60}),
     							 error_messages={
     							 'required': 'Введите название изображения'
     							 				}
@@ -21,5 +22,5 @@ class FileImageForm(forms.ModelForm):
     							 )
     description_file = forms.CharField(label='Описание изображения',
     								   required=False,
-                                       widget=forms.Textarea(attrs={'col': 80, 'rows': 10}),
+                                       widget=forms.Textarea(attrs={'cols': 40, 'rows': 7}),
                                       )
