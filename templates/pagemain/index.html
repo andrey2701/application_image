@@ -1,19 +1,27 @@
 {% extends '../base.html' %}
 {% block title %}Главная страница{% endblock title %}
 {% block content %}
-  <ul>
-  	{% for image in images %}
-  	  <li>
-  	  	<p>{{ image.name_image }}</p>
-  	  	<img src="{{ image.name_file.url }}" alt='изображение' height='50'>
-  	  	<p>{{ image.data_added|date:'d E, Y г. H:i:s' }}</p>
-  	  	<p>{{ image.description_file }}</p>
-  	  </li>
-  	{% empty %}
-  	  <li>
-  	  	<p>Нет изображений для обработки</p>
-  	  </li>
-  	{% endfor %}  
-  </ul>
+	{% for image in images %}
+	  <table>
+      {% if forloop.first %}
+        <tr>
+          <th>Наименование</th>
+          <th>Изображение</th>
+          <th>Дата создания</th>
+          <th>Описание</th>
+          <th>Редактирование</th>
+        </tr>
+      {% endif %}     
+      <tr>
+        <td>{{ image.name_image }}</td>
+        <td><img src="{{ image.name_file.url }}" height='50'></td>
+        <td>{{ image.data_added|date:'d E, Y г. H:i:s' }}</td>
+        <td>{{ image.description_file }}</td>
+        <td><a href="{% url 'pagemain:del_image' image.id %}">Удалить</a></td>
+      </tr>
+    </table>
+  {% empty %}
+    <p>Нет изображений для обработки</p>
+  {% endfor %}  
   {% include '../includes/image_form.html' %}
 {% endblock content %}

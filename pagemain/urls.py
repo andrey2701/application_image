@@ -11,4 +11,5 @@ urlpatterns = [
 # Домашняя страница
 path('', views.index, name='index'),
 path('success/', views.success, name='success'),
+path('del_image/<int:image_id>/', views.del_image, name='del_image'),
 ]
