@@ -1,5 +1,5 @@
 from django import forms
-from .models import FileImage
+from .models import FileImage, Topic
 
 class FileImageForm(forms.ModelForm):
     class Meta:
@@ -24,3 +24,11 @@ class FileImageForm(forms.ModelForm):
     								   required=False,
                                        widget=forms.Textarea(attrs={'cols': 40, 'rows': 7}),
                                       )
+
+
+class TopicForm(forms.ModelForm):
+    class Meta:
+        model = Topic
+        fields = ['topic']
+        labels = {'topic': 'Тема'}
+        widgets = {'topic': forms.TextInput(attrs={'size': 60})}

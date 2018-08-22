@@ -1,5 +1,21 @@
 from django.db import models
 
+class Topic(models.Model):
+    """Тема для изображений"""  
+    topic = models.CharField(max_length=200,
+                             verbose_name='Тема для изображений')
+    data_added = models.DateTimeField(auto_now_add=True,
+                                      verbose_name='Дата создания темы')
+
+    class Meta:
+        verbose_name = 'Тема'
+        verbose_name_plural = 'Темы'
+
+    def __str__(self):
+        return self.topic
+
+
+
 class FileImage(models.Model):
     """Название изображения, которое необоходимо обработать"""
     name_image = models.CharField(max_length=200,
@@ -13,6 +29,7 @@ class FileImage(models.Model):
     file_height = models.PositiveSmallIntegerField()
     data_added = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Дата создания изображения')
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     
     class Meta:
         verbose_name = 'Изображение'
@@ -20,3 +37,4 @@ class FileImage(models.Model):
         
     def __str__(self):
         return self.name_image
+
