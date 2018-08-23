@@ -6,9 +6,18 @@ from .models import FileImage, Topic
 from .forms import FileImageForm, TopicForm
 
 def index(request):
+	"""Отображение тем на домашней странице"""
 	topics = Topic.objects.order_by('data_added')
 	context = {'topics': topics}
 	return render(request, 'pagemain/index.html', context)
+
+def images_topic(request, topic_id):
+	"""Отображение изображений в теме"""
+	topic = Topic.objects.get(id=topic_id)
+	images = topic.fileimage_set.order_by('-data_added')
+	context = {'topic': topic, 'images': images}
+	return render(request, 'pagemain/images_topic.html', context)
+
 
 # def index(request):
 # 	images = FileImage.objects.order_by('data_added')
@@ -25,10 +34,8 @@ def index(request):
 # 		form = FileImageForm()
 # 	return render(request, 'pagemain/index.html', {'form': form, 'images': images})
 
-def success(request):
-	return HttpResponse('<h2>Файл сохранен</h2>')
-
 def del_image(request, image_id):
+	"""Удаление изображения из списка (таблицы) изображений"""
 	try:
 		image = FileImage.objects.get(id=image_id)
 		image.delete()

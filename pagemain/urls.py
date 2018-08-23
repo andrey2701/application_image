@@ -8,8 +8,10 @@ from django.views.generic import TemplateView
 app_name = 'pagemain'
 
 urlpatterns = [
-# Домашняя страница
+# Домашняя страница с темами
 path('', views.index, name='index'),
-path('success/', views.success, name='success'),
+# Отображение изображений по теме
+path('images_topic/<int:topic_id>/', views.images_topic, name='images_topic'),
+# Удаление изображения
 path('del_image/<int:image_id>/', views.del_image, name='del_image'),
 ]
