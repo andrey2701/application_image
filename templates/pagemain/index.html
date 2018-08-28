@@ -2,10 +2,12 @@
 {% block title %}Главная страница с темами{% endblock title %}
 {% block content %}
   <h2>Темы:</h2>
-  {% for topic in topics %}
-    <div class="topic"><a href="{% url 'pagemain:images_topic' topic.id %}" >{{ topic }}</a></div>
-  {% empty %}
-    <p>нет тем</p>
-  {% endfor %}  
+  <div class="block_topic">
+    {% for topic in topics %}
+      <div class="topic"><a href="{% url 'pagemain:images_topic' topic.id %}" >{{ topic }}</a></div>
+    {% empty %}
+      <p>нет тем</p>
+    {% endfor %}
+  </div>
   {% include 'includes/dialog_topic.html' %}
 {% endblock content %}
