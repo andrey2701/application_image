@@ -1,0 +1,20 @@
+nav ul {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+ul.nav {
+	list-style-type: none;
+	padding-left: 0;
+	margin-left: 0;
+}
+
+ul.nav h3 {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+nav {
+	float: left;
+	width: 10em;
+}
