@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     #Мои приложения
     'pagemain',
     'django_cleanup',
+    # Сторонние приложения
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
+# Настройки django-bootstrap3
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}
